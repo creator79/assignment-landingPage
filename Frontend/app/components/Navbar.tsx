@@ -25,10 +25,10 @@ const Navbar = () => {
     >
       <Image
             loading="lazy"
-            src="/Images/ModeUi.svg"
+            src="/Images/Dynamic/logo.png"
             alt = 'Image'
-            height={100}
-            width={100}
+            height={1000}
+            width={1000}
 
             className="aspect-[5.25] object-contain object-center w-[84px] fill-neutral-900 overflow-hidden shrink-1 max-w-full my-auto"
           />
