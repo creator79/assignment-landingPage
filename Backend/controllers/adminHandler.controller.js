@@ -3,6 +3,8 @@ const path = require('path');
 const request = require('request');
 const { isValidEmail, readDataFromFile, writeDataToFile } = require('../utils/emailValidation');
 
+const upload = require('../middlewares/multerConfig.middlewares');
+
 
 const updateLogo = async (req, res, next) => {
   try {
@@ -22,16 +24,41 @@ const updateLogo = async (req, res, next) => {
 
   }
 };
+
+// logoController.js
+
+// const updateLogo = async (req, res, next) => {
+//   try {
+//     upload.single('logo')(req, res, (err) => {
+  
+//       res.json({ message: 'Logo updated successfully' });
+//     });
+//   } catch (error) {
+//     next(error);
+//   }
+// };
+// module.exports = { updateLogo};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const updateButtonText = async (req, res, next) => {
   try {
-    // Assuming buttonText is not a nested object in the request body
-    let { buttonText } = req.body;
-
-    // Validate that the required data is present
-    if (!buttonText || typeof buttonText !== 'string') {
-      return res.status(400).json({ error: 'Invalid buttonText provided' });
-    }
-
+ 
     const newButtonText = req.body.newButtonText;
 
     // Validate that the required data is present
@@ -64,24 +91,7 @@ function downloadImage(url, destination) {
     });
 }
 
-// const submitEmail= async (req, res) => {
-//   try {
-//       const { email } = req.body;
 
-//       if (!email) {
-//           return res.status(400).json({ error: 'Email is required' });
-//       }
-
-//       // Store the email
-//       submittedEmails.push(email);
-
-//       // Respond with success message
-//       res.json({ message: 'Email submitted successfully' });
-//   } catch (error) {
-//       console.error(error);
-//       res.status(500).json({ error: 'Internal Server Error' });
-//   }
-// };
 
 const submitEmail = async (req, res) => {
   const dataFilePath = path.join(__dirname, '..', 'data.json');

@@ -1,9 +1,14 @@
 import React from 'react'
 
-const Hero = () => {
+interface HeroProps {
+  updatedButtonText?: string;
+}
+
+
+const Hero: React.FC<HeroProps> = ({ updatedButtonText }) => {
   return (
-<>
-<div className="flex w-full flex-col items-center pt-12 px-20 max-md:max-w-full max-md:px-5">
+    <>
+      <div className="flex w-full flex-col items-center pt-12 px-20 max-md:max-w-full max-md:px-5">
         <div className="text-fuchsia-900 text-center text-base font-medium leading-5 mt-11 max-md:max-w-full max-md:mt-10">
           Seamless experience
         </div>
@@ -16,16 +21,17 @@ const Hero = () => {
         </div>
         <div className="justify-center items-stretch bg-fuchsia-900 flex gap-2 mt-8 p-4 rounded-lg">
           <div className="text-white text-center text-base font-medium leading-5 grow whitespace-nowrap">
-            Unlock your Card
+            {updatedButtonText || 'Unlock your Card'}
           </div>
-       
+
         </div>
         <div className="text-gray-500 text-center text-sm font-medium leading-5 mt-4 max-md:max-w-full">
           *No credit card required
         </div>
       </div>
-</>
-  )
+    </>
+  );
 }
+
 
 export default Hero
