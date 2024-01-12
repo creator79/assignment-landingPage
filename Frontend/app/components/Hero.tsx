@@ -1,12 +1,15 @@
-import React from 'react'
+"use client";
+import React from 'react';
 import Link from 'next/link';
 
 interface HeroProps {
   updatedButtonText?: string;
 }
 
-
 const Hero: React.FC<HeroProps> = ({ updatedButtonText }) => {
+  // Retrieve updatedButtonText from sessionStorage if it's not provided as a prop
+  const Text = localStorage.getItem('buttonText');
+
   return (
     <>
       <div className="flex w-full flex-col items-center pt-12 px-20 max-md:max-w-full max-md:px-5">
@@ -22,23 +25,24 @@ const Hero: React.FC<HeroProps> = ({ updatedButtonText }) => {
         </div>
         <div className="justify-center items-stretch bg-fuchsia-900 flex gap-2 mt-8 p-4 rounded-lg">
           <div className="text-white text-center text-base font-medium leading-5 grow whitespace-nowrap">
-            {updatedButtonText || 'Unlock your Card'}
+  
+            {Text || updatedButtonText || 'Unlock your Card'}
           </div>
-
         </div>
-          <Link href="/admin">
-  <button type="button" className="mt-4 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-fuchsia-900 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-    Admin page 
-  </button>
-</Link>
-        
+        <Link href="/admin">
+          <button
+            type="button"
+            className="mt-4 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-fuchsia-900 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+          >
+            Admin page
+          </button>
+        </Link>
         <div className="text-gray-500 text-center text-sm font-medium leading-5 mt-4 max-md:max-w-full">
           *No credit card required
         </div>
       </div>
     </>
   );
-}
+};
 
-
-export default Hero
+export default Hero;

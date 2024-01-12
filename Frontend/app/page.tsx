@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import Phone from "./phone.png";
 
@@ -9,19 +10,17 @@ import Footer from "./components/Footer";
 import ElevatedCard from "./components/ElevatedCard";
 import Millions from "./components/Millions";
 import Unlock from "./components/Unlock";
-import AdminPanel from "./components/AdminPanel";
 import Newsletter from "./components/NewsLetter";
-
-
+import Hero from "./components/Hero";
 
 
 export default function Page () {
   return (
     <div className="items-stretch bg-white flex flex-col">
     <Navbar />
-    
-     <AdminPanel />  
+    <Hero />
     <Logos />
+
     <ElevatedCard />
     <Spending />
     <Millions />
@@ -29,7 +28,6 @@ export default function Page () {
     <Unlock />
     <Newsletter />
     <Footer />
-    {/* <Upload /> */}
    
      
     
