@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import React ,{useEffect,useState} from 'react';
 import Link from 'next/link';
 
 interface HeroProps {
@@ -7,8 +7,16 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ updatedButtonText }) => {
-  // Retrieve updatedButtonText from sessionStorage if it's not provided as a prop
-  const Text = localStorage.getItem('buttonText');
+  const [Text, setText] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Update the document title using the browser API
+    if (typeof window !== 'undefined') {
+      // Perform localStorage action
+      const storedText = localStorage.getItem('buttonText');
+      setText(storedText || null);
+    }
+  });
 
   return (
     <>
