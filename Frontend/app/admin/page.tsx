@@ -24,6 +24,10 @@ const ShowEmails = () => {
 
   return (
     <>
+       <div className="text-2xl font-bold text-black flex-1 mx-auto text-center justify-center mb-3">
+  Emails List
+</div>
+
       <div className="relative overflow-x-auto">
         <table className="w-full text-sm text-left rtl:text-right text-black dark:text-gray-400">
           <thead className="text-xs text-black uppercase bg-gray-50 dark:bg-gray-400 dark:text-gray-900">
