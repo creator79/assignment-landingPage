@@ -39,7 +39,7 @@ const AdminPanel: React.FC = () => {
            handleSubmit(e);
 
     
-            const response = await axios.post('http://localhost:8002/admin/updateButtonText', {
+            const response = await axios.post('https://digilabs-backend.onrender.com/admin/updateButtonText', {
                 newButtonText: text,
             });
 
@@ -62,7 +62,7 @@ const AdminPanel: React.FC = () => {
         try {
 
 
-            const response = await axios.post('http://localhost:8002/admin/saveImage', {
+            const response = await axios.post('https://digilabs-backend.onrender.com/admin/saveImage', {
                 imageUrl: url,
             });
             if (response.status === 200) {

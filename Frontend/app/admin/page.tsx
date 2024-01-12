@@ -9,7 +9,7 @@ const ShowEmails = () => {
     const fetchData = async () => {
       try {
         // Make a GET request to fetch emails from the API
-        const response = await axios.get('http://localhost:8002/admin/getEmails');
+        const response = await axios.get('https://digilabs-backend.onrender.com/admin/getEmails');
 
         // Update the state with the fetched emails
         setData(response.data.emails);

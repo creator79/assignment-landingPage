@@ -19,7 +19,7 @@ const Newsletter = () => {
             // Validate email (add your own validation logic if needed)
 
             // Make a POST request to the server
-            const response = await axios.post('http://localhost:8002/admin/submitEmail', {
+            const response = await axios.post('https://digilabs-backend.onrender.com/admin/submitEmail', {
                 email: email,
             });
 

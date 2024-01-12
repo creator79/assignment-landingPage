@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
     // Fetch images when the component mounts
     const fetchImages = async () => {
       try {
-        const response = await axios.get('http://localhost:8002/admin/getAllImage');
+        const response = await axios.get('https://digilabs-backend.onrender.com/admin/getAllImage');
         // Log the fetched data for debugging
        
   
