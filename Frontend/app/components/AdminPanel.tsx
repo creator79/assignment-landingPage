@@ -62,11 +62,12 @@ const AdminPanel: React.FC = () => {
         try {
 
 
-            const response = await axios.post('http://localhost:8002/admin/updateLogo', {
-                logoUrl: url,
+            const response = await axios.post('http://localhost:8002/admin/saveImage', {
+                imageUrl: url,
             });
             if (response.status === 200) {
-                console.log(response.data);
+                // console.log(response.data);
+                alert("Image Uploaded Successfully");
                 setUrl('');
                 setIsAdminPanelVisible(false);
             }

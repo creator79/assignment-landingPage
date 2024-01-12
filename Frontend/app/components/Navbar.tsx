@@ -1,10 +1,15 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Image from "next/image";
 import AdminPanel from './AdminPanel';
+import axios from 'axios';
+import Link from 'next/link';
 
 const Navbar: React.FC = () => {
   const [isAdminPanelVisible, setIsAdminPanelVisible] = useState(false);
+  const [data, setData] = useState([]);
+
+
 
   const handleAdminPanelToggle = () => {
     setIsAdminPanelVisible(!isAdminPanelVisible);
@@ -14,15 +19,31 @@ const Navbar: React.FC = () => {
     setIsAdminPanelVisible(false);
   };
 
+  useEffect(() => {
+    // Fetch images when the component mounts
+    const fetchImages = async () => {
+      try {
+        const response = await axios.get('http://localhost:8002/admin/getAllImage');
+        // Log the fetched data for debugging
+       
+  
+        // Find the length of the images array
+        const length = response.data.images.length;
+  
+        // Set the state with the last image URL
+        console.log(JSON.stringify(response.data.images[length - 1] )+ "image");
+        setData([response.data.images[length - 1]]);
+      } catch (error) {
+        console.error('Error fetching images:', error);
+      }
+    };
+  
+    // Call the fetchImages function when the component mounts
+    fetchImages();
+  }, []);
 
   return (
     <>
-
-
-
-
-
-
 
 
       <div className="justify-center items-center border-b-[color:var(--Neutral-1000,#E6E7E9)] bg-white flex w-full flex-col px-16 py-2 border-b border-solid max-md:max-w-full max-md:px-5">
@@ -45,15 +66,32 @@ const Navbar: React.FC = () => {
 
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
-            <Image
+            {
+            
+            data.map((item ,index) => (
+              <Image
               loading="lazy"
-              src="/Images/Dynamic/logo.png"
+              key={item.id}
+              src={item.imageUrl }
+              alt='Image'
+              height={100}
+              width={100}
+
+              className="aspect-[5.25] object-contain object-center w-[20rem] fill-neutral-900 overflow-hidden shrink-1 max-w-full my-auto"
+              />
+            
+            ))
+            }
+
+            {/* <Image
+              loading="lazy"
+              src="https://cdn.pixabay.com/photo/2015/07/09/22/45/tree-838667_1280.jpg"
               alt='Image'
               height={1000}
               width={1000}
 
               className="aspect-[5.25] object-contain object-center w-[20rem] fill-neutral-900 overflow-hidden shrink-1 max-w-full my-auto"
-            />
+            /> */}
 
           </a>
           <div className="flex md:order-2 space-x-3 md:space-x-0">
@@ -79,6 +117,7 @@ const Navbar: React.FC = () => {
               className="aspect-square object-contain object-center w-5 overflow-hidden shrink-0 max-w-full"
 
             />
+   
 
             <button
               data-collapse-toggle="navbar-cta"

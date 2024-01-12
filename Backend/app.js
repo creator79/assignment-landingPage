@@ -4,9 +4,18 @@ const bodyParser = require('body-parser');
 const adminPanelRoutes = require('./routes/adminPanel.route');
 const errorHandlerMiddleware = require('./middlewares/errorHandler.middlewares');
 const cors = require('cors');
+const connectDB = require('./utils/db');
 const app = express();
-const PORT = 8002;
 
+
+
+const dotenv = require('dotenv');
+dotenv.config();
+
+connectDB();
+
+
+const PORT = 8002;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
@@ -17,7 +26,7 @@ app.use((req, res, next) => {
     next();
 });
 
-// Use the admin panel routes
+
 app.use('/admin', adminPanelRoutes);
 
 // Error handling middleware

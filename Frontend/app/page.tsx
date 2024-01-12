@@ -13,10 +13,13 @@ import AdminPanel from "./components/AdminPanel";
 import Newsletter from "./components/NewsLetter";
 
 
+
+
 export default function Page () {
   return (
     <div className="items-stretch bg-white flex flex-col">
     <Navbar />
+    
      <AdminPanel />  
     <Logos />
     <ElevatedCard />
@@ -26,6 +29,7 @@ export default function Page () {
     <Unlock />
     <Newsletter />
     <Footer />
+    {/* <Upload /> */}
    
      
     
