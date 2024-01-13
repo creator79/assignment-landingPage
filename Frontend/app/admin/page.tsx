@@ -47,12 +47,15 @@ const AdminPanel: React.FC = () => {
             });
 
             if (response.status === 200) {
-                localStorage.setItem('buttonText', response.data.buttonText);
+                sessionStorage.setItem('buttonText', response.data.buttonText);
                 setText('');
                 setUpdatedButtonText(response.data.buttonText);
                 alert("Button Text Updated Successfully");
-              
+                
+                setIsAdminPanelVisible(false);
                 router.push('/');
+
+                
 
             } else {
                 console.error('Failed to update button text:', response.statusText);
@@ -78,7 +81,7 @@ const AdminPanel: React.FC = () => {
                 alert("Image Uploaded Successfully");
                 setUrl('');
                 setIsAdminPanelVisible(false);
-              
+                router.push('/');
                 
             }
             else {

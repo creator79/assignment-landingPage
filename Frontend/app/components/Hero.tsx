@@ -13,7 +13,7 @@ const Hero: React.FC<HeroProps> = ({ updatedButtonText }) => {
     // Update the document title using the browser API
     if (typeof window !== 'undefined') {
       // Perform localStorage action
-      const storedText = localStorage.getItem('buttonText');
+      const storedText = sessionStorage.getItem('buttonText');
       setText(storedText || null);
     }
   });
